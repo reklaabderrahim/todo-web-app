@@ -1,13 +1,13 @@
 package ch.cern.todo.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name = "task_categories")
 public class Category {
@@ -25,14 +25,14 @@ public class Category {
     private String description;
 
     public static Category create(String name, String description) {
-        Category category = new Category();
-        category.setName(name);
-        category.setDescription(description);
-        return category;
+        return Category.builder()
+                .name(name)
+                .description(description)
+                .build();
     }
 
     public static Category create(Long id, String name, String description) {
-        Category category = Category.create(name, description);
+        Category category = create(name, description);
         category.setId(id);
         return category;
     }

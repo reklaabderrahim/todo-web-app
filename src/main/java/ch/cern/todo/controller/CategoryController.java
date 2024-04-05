@@ -18,7 +18,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-    public ResponseEntity<Category> createTask(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryDto categoryDto) {
         Category category = Category.create(categoryDto.getName(), categoryDto.getDescription());
         return new ResponseEntity<>(
                 categoryService.createCategory(category),
@@ -27,7 +27,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> updateTask(@RequestBody CategoryDto categoryDto, @PathVariable Long id) {
+    public ResponseEntity<Category> updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id) {
         Category category = Category.create(id, categoryDto.getName(), categoryDto.getDescription());
         return new ResponseEntity<>(
                 categoryService.updateCategory(category),
@@ -36,7 +36,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> findTaskById(@PathVariable Long id) {
+    public ResponseEntity<Category> findCategoryById(@PathVariable Long id) {
         return new ResponseEntity<>(
                 categoryService.findCategoryById(id),
                 HttpStatus.OK
@@ -44,7 +44,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAllTasks() {
+    public ResponseEntity<List<Category>> findAllCategories() {
         return new ResponseEntity<>(
                 categoryService.retrieveAllCategories(),
                 HttpStatus.OK
@@ -52,7 +52,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id) {
         categoryService.deleteCategoryById(id);
         return ResponseEntity.ok().build();
     }

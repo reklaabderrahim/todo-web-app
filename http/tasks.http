@@ -1,0 +1,40 @@
+### Create task "WEB"
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+
+{
+  "name": "web",
+  "description": "web dev",
+  "deadline": "2024-04-06T10:30:15",
+  "category": {
+    "name": "software",
+    "description": "software"
+  }
+}
+
+
+### Update Task "WEB"
+PUT http://localhost:8080/api/tasks/1
+Content-Type: application/json
+
+{
+  "name": "web",
+  "description": "web dev 2",
+  "deadline": "2024-04-06T10:30:15",
+  "category": {
+    "name": "software",
+    "description": "software"
+  }
+}
+
+### Delete task "WEB"
+DELETE http://localhost:8080/api/tasks/1
+Content-Type: application/json
+
+### Find all tasks
+GET http://localhost:8080/api/tasks
+Content-Type: application/json
+
+### Find Task by id
+GET http://localhost:8080/api/tasks/1
+Accept: application/json

@@ -1,11 +1,14 @@
 package ch.cern.todo.service.impl;
 
+import ch.cern.todo.exception.CategoryNotFoundException;
 import ch.cern.todo.exception.TaskNotFoundException;
+import ch.cern.todo.model.Category;
 import ch.cern.todo.model.Task;
+import ch.cern.todo.repository.CategoryRepository;
 import ch.cern.todo.repository.TaskRepository;
 import ch.cern.todo.service.TaskService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public Task findTaskById(Long id) {
@@ -28,16 +32,31 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task persistTask(Task task) {
-        return taskRepository.saveAndFlush(task);
+    @Transactional
+    public Task createTask(Task task, Category category) {
+        Category foundCategory = categoryRepository.findCategoriesByName(category.getName())
+                .orElse(category);
+        return taskRepository.saveAndFlush(Task.linkToCategory(task, foundCategory));
     }
 
     @Override
-    public Long deleteTaskById(Long id) {
+    @Transactional
+    public Task updateTask(Task task, Category category) {
+        if (!taskRepository.existsById(task.getId())) {
+            throw new CategoryNotFoundException("Cannot find task with id : " + task.getId());
+        }
+        Category foundCategory = categoryRepository.findCategoriesByName(category.getName())
+                .orElse(category);
+
+        return taskRepository.saveAndFlush(Task.linkToCategory(task, foundCategory));
+    }
+
+    @Override
+    @Transactional
+    public void deleteTaskById(Long id) {
         if (!taskRepository.existsById(id)) {
             throw new TaskNotFoundException("Cannot find task with id : " + id);
         }
         taskRepository.deleteById(id);
-        return id;
     }
 }

@@ -2,8 +2,10 @@ package ch.cern.todo.service.impl;
 
 import ch.cern.todo.exception.CategoryAlreadyExistException;
 import ch.cern.todo.exception.CategoryNotFoundException;
+import ch.cern.todo.exception.CategoryWithAssociatedTasksException;
 import ch.cern.todo.model.Category;
 import ch.cern.todo.repository.CategoryRepository;
+import ch.cern.todo.repository.TaskRepository;
 import ch.cern.todo.service.CategoryService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final TaskRepository taskRepository;
 
     @Override
     public Category findCategoryById(Long id) {
@@ -55,6 +58,9 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategoryById(Long id) {
         if (!categoryRepository.existsById(id)) {
             throw new CategoryNotFoundException("Cannot find category with id : " + id);
+        }
+        if (taskRepository.existsByCategoryId(id)) {
+            throw new CategoryWithAssociatedTasksException("Cannot remove category with tasks associated to it.");
         }
         categoryRepository.deleteById(id);
     }
