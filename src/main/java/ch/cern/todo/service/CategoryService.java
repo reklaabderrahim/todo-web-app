@@ -3,10 +3,12 @@ package ch.cern.todo.service;
 import ch.cern.todo.model.Category;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CategoryService {
-    Category findCategoryByName(String name);
+    Category findCategoryById(Long id);
     List<Category> retrieveAllCategories();
-    Category persistCategory(Category category);
-    Category deleteCategoryByName(String name);
+    Category createCategory(Category category);
+    Category updateCategory(Category category);
+    void deleteCategoryById(Long id);
 }

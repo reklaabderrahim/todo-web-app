@@ -18,9 +18,22 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name", unique = true)
     private String name;
 
     @Column(name = "category_description")
     private String description;
+
+    public static Category create(String name, String description) {
+        Category category = new Category();
+        category.setName(name);
+        category.setDescription(description);
+        return category;
+    }
+
+    public static Category create(Long id, String name, String description) {
+        Category category = Category.create(name, description);
+        category.setId(id);
+        return category;
+    }
 }

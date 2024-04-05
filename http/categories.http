@@ -1,0 +1,39 @@
+### Create Catagory "SPORT"
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "name": "sport",
+  "description": "all sports"
+}
+
+### Create Catagory "SOFTWARE"
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "name": "software",
+  "description": "software category"
+}
+
+### Update Catagory "SPORT"
+PUT http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "id": 11,
+  "name": "sport",
+  "description": "all sports"
+}
+
+### Delete Catagory "SPORTS"
+DELETE http://localhost:8080/api/categories/11
+Content-Type: application/json
+
+### Find all Catagories
+GET http://localhost:8080/api/categories
+Content-Type: application/json
+
+### Find Category by id
+GET http://localhost:8080/api/categories/12
+Accept: application/json
