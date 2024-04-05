@@ -4,6 +4,7 @@ import ch.cern.todo.dto.TaskDto;
 import ch.cern.todo.model.Category;
 import ch.cern.todo.model.Task;
 import ch.cern.todo.service.TaskService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody TaskDto taskDto) {
         return new ResponseEntity<>(
                 taskService.createTask(
                         Task.create(taskDto.getName(), taskDto.getDescription(), taskDto.getDeadline()),
@@ -29,7 +30,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@RequestBody TaskDto taskDto, @PathVariable Long id) {
+    public ResponseEntity<Task> updateTask(@Valid @RequestBody TaskDto taskDto, @PathVariable Long id) {
         return new ResponseEntity<>(
                 taskService.updateTask(
                         Task.create(id, taskDto.getName(), taskDto.getDescription(), taskDto.getDeadline()),
