@@ -1,0 +1,28 @@
+2024-04-05 16:26:11.941138+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "'build 1111111111111111111111111111111111111111111111111111111111111111111111111... (330)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "'build 1111111111111111111111111111111111111111111111111111111111111111111111111... (330)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:29:06.182619+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (111)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (111)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:29:18.585792+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (110)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (110)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:30:02.088777+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (101)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "'1234567890123456789012345678901234567890123456789012345678901234567890123456789... (101)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:35:28.255140+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:36:27.287327+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]
+2024-04-05 16:46:56.038559+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"
+Value too long for column "TASK_NAME CHARACTER VARYING(100)": "U&'12345678901234567890123456789012345678901234567890123456789012345678901234567... (101)"; SQL statement:
+insert into tasks (category_id,deadline,task_description,task_name,task_id) values (?,?,?,?,?) [22001-224]

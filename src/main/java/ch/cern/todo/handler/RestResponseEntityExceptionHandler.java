@@ -28,6 +28,10 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return ResponseEntity.badRequest().body(error);
     }
 
+    /*
+    Overriding handleMethodArgumentNotValid from ResponseEntityExceptionHandler
+    to change the user error response
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   @NonNull HttpHeaders headers,
@@ -40,5 +44,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         );
 
         return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(value = {Exception.class})
+    protected ResponseEntity<Error> handleGenericException(RuntimeException ex) {
+        Error error = new Error(LocalDateTime.now(), HttpStatus.INTERNAL_SERVER_ERROR.value(), Collections.singletonList(ex.getMessage()));
+        return ResponseEntity.internalServerError().body(error);
     }
 }

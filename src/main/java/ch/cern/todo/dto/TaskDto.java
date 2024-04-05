@@ -1,5 +1,6 @@
 package ch.cern.todo.dto;
 
+import ch.cern.todo.validator.ByteSize;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
@@ -15,9 +16,11 @@ import java.time.LocalDateTime;
 @Setter
 public class TaskDto {
     @NotBlank(message = "Task name cannot be blank")
+    @ByteSize(max = 100, message = "Task name byte size should not exceed 100 bytes")
     private String name;
 
     @NotBlank(message = "Task description cannot be blank")
+    @ByteSize(max = 500, message = "Task description byte size should not exceed 500 bytes")
     private String description;
 
     @Future(message = "Task deadline should be in the future")
