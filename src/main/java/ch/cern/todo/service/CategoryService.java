@@ -3,7 +3,6 @@ package ch.cern.todo.service;
 import ch.cern.todo.model.Category;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface CategoryService {
     Category findCategoryById(Long id);

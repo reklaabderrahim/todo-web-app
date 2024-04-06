@@ -43,7 +43,7 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     public Task updateTask(Task task, Category category) {
         if (!taskRepository.existsById(task.getId())) {
-            throw new CategoryNotFoundException("Cannot find task with id : " + task.getId());
+            throw new TaskNotFoundException("Cannot find task with id : " + task.getId());
         }
         Category foundCategory = categoryRepository.findCategoriesByName(category.getName())
                 .orElse(category);

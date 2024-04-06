@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,5 +50,18 @@ public class Task {
     public static Task linkToCategory(Task task, Category category) {
         task.setCategory(category);
         return task;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(name, task.name) && Objects.equals(description, task.description) && Objects.equals(deadline, task.deadline) && Objects.equals(category, task.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, deadline, category);
     }
 }

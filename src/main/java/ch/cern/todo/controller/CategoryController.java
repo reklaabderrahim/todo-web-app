@@ -21,8 +21,9 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<Category> createCategory(@Valid @RequestBody CategoryDto categoryDto) {
         Category category = Category.create(categoryDto.getName(), categoryDto.getDescription());
+        Category category1 = categoryService.createCategory(category);
         return new ResponseEntity<>(
-                categoryService.createCategory(category),
+                category1,
                 HttpStatus.CREATED
         );
     }
@@ -37,7 +38,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> findCategoryById(@PathVariable Long id) {
+    public ResponseEntity<Category> findCategory(@PathVariable Long id) {
         return new ResponseEntity<>(
                 categoryService.findCategoryById(id),
                 HttpStatus.OK
@@ -53,7 +54,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategoryById(id);
         return ResponseEntity.ok().build();
     }
