@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### remove db
+mydb.mv.db
+mydb.trace.db
