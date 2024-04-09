@@ -21,7 +21,6 @@ public class TaskDto {
     @ByteSize(max = 100, message = "Task name byte size should not exceed 100 bytes")
     private String name;
 
-    @NotBlank(message = "Task description cannot be blank")
     @ByteSize(max = 500, message = "Task description byte size should not exceed 500 bytes")
     private String description;
 

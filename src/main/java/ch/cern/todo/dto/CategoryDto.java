@@ -15,7 +15,6 @@ public class CategoryDto {
     @ByteSize(max = 100, message = "Category name byte size should not exceed 100 bytes")
     private String name;
 
-    @NotBlank(message = "Category description cannot be blank")
     @ByteSize(max = 500, message = "Category description byte size should not exceed 500 bytes")
     private String description;
 }

@@ -1,7 +1,7 @@
 CREATE TABLE task_categories (
     category_id             NUMBER              NOT NULL,
     category_name           VARCHAR2(100)       NOT NULL,
-    category_description    VARCHAR2(500)       NOT NULL,
+    category_description    VARCHAR2(500)       NULL,
     CONSTRAINT task_categories_pk PRIMARY KEY (category_id),
     constraint category_name_uk UNIQUE (category_name),
     /* H2 DB doesn't accept VARCHAR2(100 BYTE), so we can use the LENGTH function to get the length of a string in bytes.*/
@@ -19,7 +19,7 @@ CREATE SEQUENCE if not exists task_categories_seq
 CREATE TABLE tasks (
     task_id             NUMBER              NOT NULL,
     task_name           VARCHAR2(100)       NOT NULL,
-    task_description    VARCHAR2(500)       NOT NULL,
+    task_description    VARCHAR2(500)       NULL,
     deadline            TIMESTAMP           NOT NULL,
     category_id         NUMBER              NOT NULL,
     CONSTRAINT tasks_pk PRIMARY KEY (task_id),
